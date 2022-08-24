@@ -9,25 +9,26 @@ import XCTest
 @testable import VideoPlayerSwiftUI
 
 class VideoPlayerSwiftUITests: XCTestCase {
+    
+    func testAPIWorking()
+          {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+              let exp = self.expectation(description: "myExpectation")
+              
+              VideoCaller.shared.getVideos { result in
+                  
+                  switch result {
+                  case .success(let videos):
+                      XCTAssert(videos.first?.id != nil)
+                      // The request is finished, so our expectation
+                      exp.fulfill()
+                  case .failure(_):
+                      XCTFail("Fail")
+                      // The request is finished, so our expectation
+                      exp.fulfill()
+                  }
+              }
+            // We ask the unit test to wait our expectation to finish.
+              self.waitForExpectations(timeout: 5)
+          }
 }

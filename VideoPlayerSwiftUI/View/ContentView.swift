@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     let videoCaller = VideoCaller.shared
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
