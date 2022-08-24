@@ -15,6 +15,8 @@ struct Controls : View {
     @Binding var isplaying: Bool
     @Binding var pannel: Bool
     @Binding var value: Float
+    @Binding var vidIndex: Int
+    @Binding var videos: Video?
     
     var body : some View{
         
@@ -24,7 +26,9 @@ struct Controls : View {
                 
                 Button(action: {
                     
-                    
+                    if !(vidIndex == 0) {
+                        vidIndex -= 1
+                    }
                     
                     
                 }) {
@@ -56,7 +60,14 @@ struct Controls : View {
                 }
                 Spacer()
                 Button(action: {
-                    self.player.seek(to: CMTime(seconds: self.getSeconds() + 10, preferredTimescale: 1))
+                    if videos != nil {
+                        let lastVideo = videos?.last
+                        let lastIndex = videos!.firstIndex(where: { $0.id == lastVideo?.id })
+                        if !(vidIndex == lastIndex) {
+                            vidIndex += 1
+                        }
+                    }
+                    
                     
                 }) {
                     Image("next")

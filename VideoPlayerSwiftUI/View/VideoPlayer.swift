@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+import AVKit
+import UIKit
 
 struct VideoPlayer : UIViewControllerRepresentable {
     

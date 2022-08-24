@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
 
-class Host : UIHostingController<MainView>{
-    
+class Host: UIHostingController<MainView>{
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        
         return .lightContent
     }
 }

@@ -31,10 +31,18 @@ struct MainView: View {
                 
                 if self.showcontrols{
                     
-                    Controls(player: self.$player, isplaying: self.$isplaying, pannel: self.$showcontrols,value: self.$value)
+                    Controls(player: self.$player, isplaying: self.$isplaying, pannel: self.$showcontrols,value: self.$value, vidIndex: $vidIndex, videos: self.$apiVideos)
                 }
                 
             }
+            .onChange(of: vidIndex, perform: { newValue in
+                if apiVideos != nil {
+                    self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: apiVideos![vidIndex].hlsURL)! ) )
+                    self.player.pause()
+                    self.isplaying = false
+                }
+                
+            })
             .frame(height: UIScreen.main.bounds.height / 3.5)
             .onTapGesture {
                 
