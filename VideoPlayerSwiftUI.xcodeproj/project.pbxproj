@@ -16,6 +16,7 @@
 		887A4AEE28B69BE800077974 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A4AED28B69BE800077974 /* Video.swift */; };
 		887A4AF028B69D1100077974 /* VideoCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A4AEF28B69D1100077974 /* VideoCaller.swift */; };
 		887A4AF328B6A34000077974 /* VideoCallerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A4AF228B6A34000077974 /* VideoCallerError.swift */; };
+		887A4AF628B6A44500077974 /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A4AF528B6A44500077974 /* URLResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		887A4AED28B69BE800077974 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		887A4AEF28B69D1100077974 /* VideoCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaller.swift; sourceTree = "<group>"; };
 		887A4AF228B6A34000077974 /* VideoCallerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallerError.swift; sourceTree = "<group>"; };
+		887A4AF528B6A44500077974 /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +103,11 @@
 		3AF67A5A25A64DBD00D360A7 /* VideoPlayerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				887A4AEC28B69B4800077974 /* Miscellaneous */,
+				887A4AF428B6A43500077974 /* Extensions */,
+				887A4AEC28B69B4800077974 /* AppDelegate */,
 				887A4AEB28B69B3900077974 /* ViewModel */,
 				887A4AEA28B69B3400077974 /* View */,
 				887A4AE928B69B2F00077974 /* Model */,
-				3AF67A5B25A64DBD00D360A7 /* VideoPlayerSwiftUIApp.swift */,
 				3AF67A5F25A64DBF00D360A7 /* Assets.xcassets */,
 				3AF67A6425A64DBF00D360A7 /* Info.plist */,
 				3AF67A6125A64DBF00D360A7 /* Preview Content */,
@@ -164,11 +166,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		887A4AEC28B69B4800077974 /* Miscellaneous */ = {
+		887A4AEC28B69B4800077974 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				3AF67A5B25A64DBD00D360A7 /* VideoPlayerSwiftUIApp.swift */,
 			);
-			path = Miscellaneous;
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		887A4AF428B6A43500077974 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				887A4AF528B6A44500077974 /* URLResponse.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +313,7 @@
 			files = (
 				887A4AF028B69D1100077974 /* VideoCaller.swift in Sources */,
 				887A4AF328B6A34000077974 /* VideoCallerError.swift in Sources */,
+				887A4AF628B6A44500077974 /* URLResponse.swift in Sources */,
 				3AF67A5E25A64DBD00D360A7 /* ContentView.swift in Sources */,
 				887A4AEE28B69BE800077974 /* Video.swift in Sources */,
 				3AF67A5C25A64DBD00D360A7 /* VideoPlayerSwiftUIApp.swift in Sources */,

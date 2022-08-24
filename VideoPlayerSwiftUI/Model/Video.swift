@@ -5,7 +5,7 @@
 //  Created by Amin  Bagheri  on 2022-08-24.
 //
 
-// MARK:  let video = try? newJSONDecoder().decode(Video.self, from: jsonData)
+// MARK:  The returned JSON will be parsed in this object.
 
 import Foundation
 

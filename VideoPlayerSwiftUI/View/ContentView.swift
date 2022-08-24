@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let videoCaller = VideoCaller.shared
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear {
+                videoCaller.getVideos { result in
+                    switch result {
+                    case.success(let videos):
+                        print("VIDEO URL: ", videos.first?.hlsURL)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
     }
 }
 
