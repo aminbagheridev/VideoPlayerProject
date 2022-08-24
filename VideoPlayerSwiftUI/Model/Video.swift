@@ -16,7 +16,15 @@ struct VideoElement: Codable {
     let fullURL: String
     let videoDescription, publishedAt: String
     let author: Author
-
+    var date: Date? {
+        print("PUBLISHED AT", publishedAt)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        return dateFormatter.date(from: publishedAt) // replace Date String
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, title, hlsURL, fullURL
         case videoDescription = "description"
