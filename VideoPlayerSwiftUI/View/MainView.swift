@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  VideoPlayerSwiftUI
 //
 //  Created by Michael Gauthier on 2021-01-06.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 import AVKit
+import Parma
 
-struct ContentView: View {
+struct MainView: View {
     
-    @State var markdown: LocalizedStringKey?
     @State var vidIndex: Int = 0
     @State var apiVideos: Video?
     let videoCaller = VideoCaller.shared
@@ -62,8 +62,10 @@ struct ContentView: View {
                         }
                         .padding(.bottom)
                         
+                        Parma(apiVideos![vidIndex].videoDescription)
+                            .padding(.horizontal)
+                            
                         
-                        Text(AttributedString(apiVideos![vidIndex].videoDescription))
                     }
                     
                     
@@ -106,9 +108,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
 
@@ -133,7 +135,7 @@ struct Controls : View {
                     
                 }) {
                     
-                    Image(systemName: "backward.fill")
+                    Image("previous")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding(20)
@@ -156,7 +158,7 @@ struct Controls : View {
                     
                 }) {
                     
-                    Image(systemName: self.isplaying ? "pause.fill" : "play.fill")
+                    Image(self.isplaying ? "pause" : "play")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding(20)
@@ -170,7 +172,7 @@ struct Controls : View {
                     
                 }) {
                     
-                    Image(systemName: "forward.fill")
+                    Image("next")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding(20)
@@ -278,7 +280,7 @@ struct CustomProgressBar : UIViewRepresentable {
     }
 }
 
-class Host : UIHostingController<ContentView>{
+class Host : UIHostingController<MainView>{
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         
