@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import AVKit
+
+class VideoViewModel: ObservableObject {
+
+    
+}
