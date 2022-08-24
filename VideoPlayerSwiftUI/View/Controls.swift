@@ -22,7 +22,7 @@ struct Controls : View {
         
         VStack{
             Spacer()
-            HStack{
+            HStack {
                 
                 Button(action: {
                     
@@ -32,11 +32,18 @@ struct Controls : View {
                     
                     
                 }) {
-                    
+                    ZStack {
+                        Circle()
+                            .frame(width: 61, height: 61)
+                            .foregroundColor(.black)
+                        Circle()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white.opacity(0.9))
                     Image("previous")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding(20)
+                    }
                 }
                 
                 Spacer()
@@ -53,10 +60,18 @@ struct Controls : View {
                         self.isplaying = true
                     }
                 }) {
+                    ZStack {
+                        Circle()
+                            .frame(width: 67, height: 67)
+                            .foregroundColor(.black)
+                        Circle()
+                            .frame(width: 66, height: 66)
+                            .foregroundColor(.white.opacity(0.9))
                     Image(self.isplaying ? "pause" : "play")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding(20)
+                    }
                 }
                 Spacer()
                 Button(action: {
@@ -70,10 +85,18 @@ struct Controls : View {
                     
                     
                 }) {
-                    Image("next")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding(20)
+                    ZStack {
+                        Circle()
+                            .frame(width: 61, height: 61)
+                            .foregroundColor(.black)
+                        Circle()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white.opacity(0.9))
+                        Image("next")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding(20)
+                    }                    
                 }
             }
             Spacer()
