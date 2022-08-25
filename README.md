@@ -17,4 +17,7 @@ I have install Parma as the sole third-party library to render markdown.
 
 https://github.com/dasautoooo/Parma
 
+### Server
+
+Make sure the local server is running as well, otherwise the API won't work.
 
