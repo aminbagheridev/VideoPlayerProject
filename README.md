@@ -4,7 +4,7 @@
 App made in SwiftUI with best practices.
 ## Installation
 
-### Make sure to run the xcworkspace file!!
+#### Make sure to run the xcworkspace file!!
 
 Download the project via Code > Download as ZIP
 
