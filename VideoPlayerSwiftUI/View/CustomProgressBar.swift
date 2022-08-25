@@ -29,44 +29,37 @@ struct CustomProgressBar : UIViewRepresentable {
         slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
         slider.thumbTintColor = .red
+        slider.setThumbImage(UIImage(named: "thumb"), for: .highlighted)
         slider.setThumbImage(UIImage(named: "thumb"), for: .normal)
+        slider.setThumbImage(UIImage(named: "thumb"), for: .selected)
+
+
         slider.value = value
         slider.addTarget(context.coordinator, action: #selector(context.coordinator.changed(slider:)), for: .valueChanged)
         return slider
     }
     
     func updateUIView(_ uiView: UISlider, context: UIViewRepresentableContext<CustomProgressBar>) {
-        
         uiView.value = value
     }
     
     class Coordinator : NSObject{
         
         var parent : CustomProgressBar
-        
         init(parent1 : CustomProgressBar) {
-            
             parent = parent1
         }
         
-        @objc func changed(slider : UISlider){
-            
+        @objc func changed(slider : UISlider) {
             if slider.isTracking{
-                
                 parent.player.pause()
-                
                 let sec = Double(slider.value * Float((parent.player.currentItem?.duration.seconds)!))
                 
                 parent.player.seek(to: CMTime(seconds: sec, preferredTimescale: 1))
-            }
-            else{
-                
+            } else {
                 let sec = Double(slider.value * Float((parent.player.currentItem?.duration.seconds)!))
-                
                 parent.player.seek(to: CMTime(seconds: sec, preferredTimescale: 1))
-                
                 if parent.isplaying{
-                    
                     parent.player.play()
                 }
             }

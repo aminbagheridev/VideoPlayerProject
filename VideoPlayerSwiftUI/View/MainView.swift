@@ -13,13 +13,13 @@ import Parma
 
 struct MainView: View {
     
-    @State var vidIndex: Int = 0
+    @State var vidIndex: Int = 0 //the index of the video being played, in the apiVideos array
     @State var apiVideos: Video?
-    let videoCaller = VideoCaller.shared
+    let videoCaller = VideoCaller.shared // the network request
     @State var player = AVPlayer(url: Bundle.main.url(forResource: "loading", withExtension: "mp4")!)
-    @State var isplaying = false
-    @State var showcontrols = false
-    @State var value : Float = 0
+    @State var isPlaying = false
+    @State var showingControls = false
+    @State var sliderValue : Float = 0
     
     var body: some View {
         NavigationView {
@@ -29,24 +29,27 @@ struct MainView: View {
                     
                     VideoPlayer(player: $player)
                     
-                    if self.showcontrols{
+                    if self.showingControls{
                         
-                        Controls(player: self.$player, isplaying: self.$isplaying, pannel: self.$showcontrols,value: self.$value, vidIndex: $vidIndex, videos: self.$apiVideos)
+                        // show controls over the video player, the controls have binding to properties on this view.
+                        Controls(player: self.$player, isplaying: self.$isPlaying, pannel: self.$showingControls, value: self.$sliderValue, vidIndex: $vidIndex, videos: self.$apiVideos)
                     }
                     
                 }
+                //when the index changes, set it to a new video, accordingly.
                 .onChange(of: vidIndex, perform: { newValue in
                     if apiVideos != nil {
                         self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: apiVideos![vidIndex].hlsURL)! ) )
                         self.player.pause()
-                        self.isplaying = false
+                        self.isPlaying = false
                     }
                     
                 })
+                //height of video
                 .frame(height: UIScreen.main.bounds.height / 3.5)
                 .onTapGesture {
                     
-                    self.showcontrols = true
+                    self.showingControls = true
                 }
                 
                 ScrollView(.vertical, showsIndicators: true) {
@@ -83,13 +86,13 @@ struct MainView: View {
                 }
             }
             .onTapGesture {
-                showcontrols = false
+                showingControls = false
             }
             .background(Color.init("systemBackground").edgesIgnoringSafeArea(.all))
             .onAppear {
                 
                 self.player.play()
-                self.isplaying = true
+                self.isPlaying = true
                 
                 
                 videoCaller.getVideos { result in
@@ -107,7 +110,7 @@ struct MainView: View {
                             let url = url
                             self.player.replaceCurrentItem(with: AVPlayerItem(url: url))
                             self.player.pause()
-                            self.isplaying = false
+                            self.isPlaying = false
                             //                                markdown = videos[vidIndex].videoDescription
                             
                         }

@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 import AVKit
-import UIKit
 
+// a uiViewRepresentable to allow for UIKit functionality within the swiftUI application
 struct VideoPlayer : UIViewControllerRepresentable {
     
     @Binding var player : AVPlayer
