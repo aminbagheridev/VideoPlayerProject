@@ -24,25 +24,54 @@ struct Controls : View {
             Spacer()
             HStack {
                 
-                Button(action: {
-                    
-                    if !(vidIndex == 0) {
-                        vidIndex -= 1
+                if vidIndex == 0 {
+                    Button(action: {
+                        if !(vidIndex == 0) {
+                            vidIndex -= 1
+                        }
+                    }) {
+                        
+                        ZStack {
+                            Circle()
+                                .frame(width: 61, height: 61)
+                                .foregroundColor(.black)
+                            Circle()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.white.opacity(0.9))
+                            Image("previous")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .padding(20)
+                        }
+                        
+                        
+                        
                     }
+                    .opacity(0.3)
+                    .disabled(true)
                     
-                    
-                }) {
-                    ZStack {
-                        Circle()
-                            .frame(width: 61, height: 61)
-                            .foregroundColor(.black)
-                        Circle()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.white.opacity(0.9))
-                    Image("previous")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding(20)
+                } else {
+                    Button(action: {
+                        if !(vidIndex == 0) {
+                            vidIndex -= 1
+                        }
+                    }) {
+                        
+                        ZStack {
+                            Circle()
+                                .frame(width: 61, height: 61)
+                                .foregroundColor(.black)
+                            Circle()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.white.opacity(0.9))
+                            Image("previous")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .padding(20)
+                        }
+                        
+                        
+                        
                     }
                 }
                 
@@ -74,30 +103,64 @@ struct Controls : View {
                     }
                 }
                 Spacer()
-                Button(action: {
-                    if videos != nil {
-                        let lastVideo = videos?.last
-                        let lastIndex = videos!.firstIndex(where: { $0.id == lastVideo?.id })
-                        if !(vidIndex == lastIndex) {
-                            vidIndex += 1
+                
+                if videos != nil {
+                    let lastVideo = videos?.last
+                    let lastIndex = videos!.firstIndex(where: { $0.id == lastVideo?.id })
+                    if (vidIndex == lastIndex) {
+                        Button(action: {
+                            if videos != nil {
+                                let lastVideo = videos?.last
+                                let lastIndex = videos!.firstIndex(where: { $0.id == lastVideo?.id })
+                                if !(vidIndex == lastIndex) {
+                                    vidIndex += 1
+                                }
+                            }
+                            
+                            
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 61, height: 61)
+                                    .foregroundColor(.black)
+                                Circle()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(.white.opacity(0.9))
+                                Image("next")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                    .padding(20)
+                            }
+                        }.opacity(0.3)
+                            .disabled(true)
+                    } else {
+                        Button(action: {
+                            if videos != nil {
+                                let lastVideo = videos?.last
+                                let lastIndex = videos!.firstIndex(where: { $0.id == lastVideo?.id })
+                                if !(vidIndex == lastIndex) {
+                                    vidIndex += 1
+                                }
+                            }
+                            
+                            
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 61, height: 61)
+                                    .foregroundColor(.black)
+                                Circle()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(.white.opacity(0.9))
+                                Image("next")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                    .padding(20)
+                            }
                         }
                     }
-                    
-                    
-                }) {
-                    ZStack {
-                        Circle()
-                            .frame(width: 61, height: 61)
-                            .foregroundColor(.black)
-                        Circle()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.white.opacity(0.9))
-                        Image("next")
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .padding(20)
-                    }                    
                 }
+                
             }
             Spacer()
             CustomProgressBar(value: self.$value, player: self.$player, isplaying: self.$isplaying)
